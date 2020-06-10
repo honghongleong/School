@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int Marks;
+
+printf("Please Input marks:");
+
+scanf("%d", &Marks);
+
+int mark = Marks;
+
+if (mark <50) 
+{
+printf("You Failed the test.");
+printf("\n Study Harder!");
+}
+else if(mark <60) 
+{
+     printf("You Scored D");
+     printf("\nStudy Harder!");
+}
+else if (mark <70) 
+{
+     printf("You Scored C");
+     printf("\nStudy Harder!");
+}
+else if (mark <80) 
+{
+     printf("You Scored B");
+     printf("\nStudy Harder!");
+}
+else if (mark<90)
+{
+     printf("You Scored A");
+     printf("\nStudy Harder!");
+}
+else
+{
+    printf("Excellent! You got distinction!");
+    printf("\nWell done!");
+}
+
+return 0;
+}
+
+
