@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main (int argc, char *argv[])
+{
+int i, Start_Value, Multiplier, Random_Number;
+i = 0;
+Start_Value = 1;
+Multiplier = 2;
+Random_Number = 0;
+printf ("i Start_Value Random_Number");
+for (i = 0; i < 10; i ++)
+{
+Random_Number = (Start_Value + (i-1)*Multiplier);
+Start_Value = Start_Value + 5;
+printf ("\n%d\t%d\t\t%d", i, Start_Value, Random_Number);
+}
+return 0;
+}
+
+
