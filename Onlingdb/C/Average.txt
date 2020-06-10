@@ -1,0 +1,24 @@
+#include <stdio.h>
+float x,z,c;
+int a,y;
+int main()
+{
+    y=-1;
+    printf ("Enter any number: ");
+    scanf ("%f", &x);
+    while(x>y)
+    {
+        c+=1;
+        a+=x;
+        printf ("Enter any number: ");
+        scanf ("%f", &x);
+        if(x==0)
+        {
+            z=a/c;
+            printf("Average is %.2f",z);
+            printf("\nGood Bye!");
+            return 0;
+        }
+    }
+    return 0;
+}
