@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int a;
+
+printf("Please Input Age:");
+scanf("%d", &a);
+
+int age = a;
+
+if (age <10) 
+{
+printf("A peerson of age %d",a);
+printf(" is a/an child");
+}
+else if(age <20) 
+{
+printf("A peerson of age %d",a);
+printf(" is a/an teenager");
+}
+else if (age <30) 
+{
+printf("A peerson of age %d",a);
+printf(" is a/an youth");
+}
+else if (age <40) 
+{
+printf("A peerson of age %d",a);
+printf(" is a/an adult");
+}
+else if (age<50)
+{
+printf("A peerson of age %d",a);
+printf(" is a/an middle-age adult");
+}
+else
+{
+printf("A peerson of age %d",a);
+printf(" is a/an old-age man");
+}
+
+return 0;
+}
+
