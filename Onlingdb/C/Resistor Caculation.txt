@@ -1,0 +1,25 @@
+#include <stdio.h>
+//#include <math.h>
+int B,E,I;
+float R;
+float P;
+int main()
+{
+    printf("Enter resistance value in ohms:");
+    scanf ("%f", &R);
+    printf("Enter beginning voltage in volts:");
+    scanf ("%d", &B);
+    printf("Enter ending voltage in volts:");
+    scanf ("%d", &E);
+    printf("Enter Increment number:");
+    scanf ("%d", &I);
+    printf("For a resistance of %.2f the power dissipation in the table below\n",R);
+    printf("Voltage \t Power\n");
+
+    while(B<=E)
+    {
+        P=((B*B)/R);
+        printf("%d \t\t %.2f \n", B,P);
+        B+=I;
+    }
+}
