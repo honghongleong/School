@@ -1,0 +1,5 @@
+To Compile:
+sudo g++ -Wall -lgrovepicpp FileName.cpp -o FileName.out
+
+To Run:
+./FileName.out
