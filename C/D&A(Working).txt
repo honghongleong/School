@@ -1,0 +1,69 @@
+import RPi.GPIO as GPIO
+from time import *
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+Buzzer = 25
+TRIG = 23
+ECHO = 24
+Green = 17
+Red = 27
+Yellow = 22
+LDR = 4   
+
+GPIO.setup(TRIG,GPIO.OUT)
+GPIO.setup(ECHO,GPIO.IN)
+GPIO.setup(Green,GPIO.OUT)
+GPIO.setup(Yellow, GPIO.OUT)
+GPIO.setup(Red, GPIO.OUT)
+GPIO.setup(Buzzer, GPIO.OUT)
+GPIO.setup(LDR, GPIO.IN)
+
+try:
+    while True:
+        if GPIO.input(LDR) == 0:
+            print ("Fire Detected !")
+            while True:
+                print("Fire Detected!")     #Display Fire Detected in the close window output
+                GPIO.output(Green,True)     #Set Green LED to HIGH
+                GPIO.output(Yellow,True)    #Set Yellow LED to HIGH
+                GPIO.output(Red,True)       #Set Red LED to HIGH
+                GPIO.output(Buzzer,True)    #Set Buzzer to ON
+                sleep(1)               #delay 5s
+                GPIO.output(Green,False)    #Set Green LED to LOW
+                GPIO.output(Yellow,False)   #Set Yellow LED to LOW
+                GPIO.output(Red,False)      #Set Red LED to LOW
+                sleep(1)
+        else:
+            GPIO.output(TRIG,True)  # generate short pulse to trigger the ultrasonic sensor.
+            sleep(0.00001)
+            GPIO.output(TRIG,False)
+            while GPIO.input(ECHO)==0:
+                pulse_start = time()
+            while GPIO.input(ECHO)==1:
+                pulse_end = time()
+            pulse_duration = pulse_end - pulse_start
+            distance = pulse_duration * 17150    #Calculate distance
+            distance = round(distance, 2)
+            print ("distance: ", distance, "cm")
+            if distance <=20:#distance is 0 to 20
+                GPIO.output(Buzzer,GPIO.HIGH)
+                GPIO.output(Green,GPIO.HIGH)
+                GPIO.output(Yellow,GPIO.HIGH)
+                GPIO.output(Red,GPIO.HIGH)
+            elif distance <=50:#distance is between 0 to 50
+                GPIO.output(Green,GPIO.HIGH)
+                GPIO.output(Yellow,GPIO.HIGH)
+                GPIO.output(Buzzer,GPIO.LOW)
+                GPIO.output(Red,GPIO.LOW)
+            elif distance <=80:#distance is 0 to 80
+                GPIO.output(Green,GPIO.HIGH)
+                GPIO.output(Buzzer,GPIO.LOW)
+                GPIO.output(Yellow,GPIO.LOW)
+                GPIO.output(Red,GPIO.LOW)
+except KeyboardInterrupt:
+    pass
+finally:
+    GPIO.cleanup
+
+
